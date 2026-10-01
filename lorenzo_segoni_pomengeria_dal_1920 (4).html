@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorenzo Segoni - Pomengeria dal 1920 | Elisir, Riserve e Degustazioni</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        segoni: {
+                            dark: '#18110E',
+                            body: '#2B1610',
+                            card: '#3A1E16',
+                            border: '#5C3426',
+                            gold: '#D4AF37',
+                            bronze: '#A36A3B',
+                            lightgold: '#F3E5AB',
+                            cream: '#FDFBF7',
+                            muted: '#D8C7B8'
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        cormorant: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #18110E;
+            color: #FDFBF7;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-cormorant {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0C0 0%, #D4AF37 50%, #A36A3B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-glass {
+            background: rgba(24, 17, 14, 0.90);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .bg-glass-card {
+            background: rgba(58, 30, 22, 0.65);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .bg-glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.3);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #18110E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A36A3B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+        .gold-box-shadow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-segoni-gold selection:text-segoni-dark">
+
+    <!-- Robust Image Error Handler -->
+    <script>
+        function handleImgError(img, baseName, labelText) {
+            if (!img.dataset.step) {
+                img.dataset.step = "1";
+                img.src = baseName + ".png";
+            } else if (img.dataset.step === "1") {
+                img.dataset.step = "2";
+                img.src = baseName + ".jpeg";
+            } else {
+                img.onerror = null;
+                const title = labelText || "Lorenzo Segoni";
+                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750">
+                    <rect width="100%" height="100%" fill="#2B1610"/>
+                    <rect x="20" y="20" width="560" height="710" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                    <circle cx="300" cy="280" r="130" fill="#18110E" stroke="#A36A3B" stroke-width="3"/>
+                    <path d="M 300 190 Q 320 230 300 370 M 240 280 Q 300 300 360 280" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                    <text x="50%" y="280" fill="#D4AF37" font-family="Playfair Display, serif" font-size="28" font-weight="bold" text-anchor="middle" dominant-baseline="middle">LS</text>
+                    <text x="50%" y="500" fill="#FDFBF7" font-family="Playfair Display, serif" font-size="24" text-anchor="middle">${title}</text>
+                    <text x="50%" y="540" fill="#A36A3B" font-family="Montserrat, sans-serif" font-size="13" letter-spacing="3" text-anchor="middle">POMENGERIA DAL 1920</text>
+                </svg>`;
+                img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+            }
+        }
+    </script>
+
+    <!-- 1. AGE VERIFICATION GATE MODAL -->
+    <div id="age-gate-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-segoni-card border-2 border-segoni-gold/60 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden gold-box-shadow">
+            <!-- Background Decorative Ornament -->
+            <div class="absolute -top-12 -left-12 w-32 h-32 bg-segoni-gold/10 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-segoni-bronze/10 rounded-full blur-2xl"></div>
+
+            <div class="w-20 h-20 mx-auto mb-5 rounded-full border border-segoni-gold/50 p-1.5 bg-segoni-dark flex items-center justify-center shadow-lg">
+                <img src="SEGONI.jpg" alt="Logo Lorenzo Segoni" class="w-full h-full object-contain" onerror="handleImgError(this, 'SEGONI', 'LS')">
+            </div>
+
+            <span class="text-segoni-gold text-[10px] uppercase tracking-[0.3em] font-bold">Verifica Accesso Legale</span>
+            <h2 class="font-serif-title text-2xl sm:text-3xl font-bold text-segoni-cream mt-2 mb-3">Sei maggiorenne?</h2>
+            
+            <p class="text-segoni-muted text-xs leading-relaxed mb-8">
+                Benvenuto alla maison <strong class="text-segoni-cream">Lorenzo Segoni</strong>. L'accesso a questa distilleria virtuale è riservato esclusivamente alle persone che hanno raggiunto l'età legale per il consumo di alcolici.
+            </p>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="verifyAge(true)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-segoni-gold via-yellow-500 to-segoni-bronze text-segoni-dark font-bold text-xs uppercase tracking-widest shadow-lg hover:brightness-110 transition">
+                    Sì, ho più di 18 anni
+                </button>
+                <button onclick="verifyAge(false)" class="w-full py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-muted hover:text-segoni-cream text-xs font-semibold uppercase tracking-wider transition">
+                    No, esci
+                </button>
+            </div>
+
+            <div id="age-denied-msg" class="hidden mt-6 p-4 rounded-xl bg-red-950/60 border border-red-800/50 text-red-200 text-xs text-center animate-fade-in">
+                <i class="fa-solid fa-triangle-exclamation text-segoni-gold mb-1 block text-lg"></i>
+                Accesso negato. I contenuti relativi ai distillati alcolici sono riservati ai maggiori di 18 anni.
+            </div>
+
+            <p class="text-[10px] text-segoni-muted/60 mt-6 italic">
+                Sito ufficiale Lorenzo Segoni - Pomengeria dal 1920. Bevi responsabilmente.
+            </p>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- STICKY HEADER -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-glass border-b border-segoni-border/40 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full border border-segoni-gold/50 p-1 bg-segoni-dark flex items-center justify-center overflow-hidden shadow-lg group-hover:border-segoni-gold transition">
+                    <img src="SEGONI.jpg" alt="Lorenzo Segoni Logo" class="w-full h-full object-contain" onerror="handleImgError(this, 'SEGONI', 'LS Logo')">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif-title text-base sm:text-lg tracking-wider text-segoni-cream font-bold group-hover:text-segoni-gold transition">LORENZO SEGONI</span>
+                    <span class="text-[9px] sm:text-[10px] tracking-[0.25em] text-segoni-bronze uppercase">Pomengeria dal 1920</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-7 text-xs font-medium tracking-widest uppercase">
+                <a href="#home" class="text-segoni-cream hover:text-segoni-gold transition">Home</a>
+                <a href="#storia" class="text-segoni-cream hover:text-segoni-gold transition">La Storia</a>
+                <a href="#catalogo" class="text-segoni-cream hover:text-segoni-gold transition">Catalogo</a>
+                <a href="#servizio-perfetto" class="text-segoni-cream hover:text-segoni-gold transition">Guida Degustazione</a>
+                <a href="#degustazioni" class="text-segoni-cream hover:text-segoni-gold transition">Prenota Visita</a>
+                <a href="#contatti" class="text-segoni-cream hover:text-segoni-gold transition">Contatti</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-segoni-card hover:bg-segoni-border border border-segoni-gold/30 text-segoni-gold transition flex items-center justify-center shadow" aria-label="Apri Carrello">
+                    <i class="fa-solid fa-cart-shopping text-base"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-segoni-gold text-segoni-dark font-bold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-segoni-cream hover:text-segoni-gold focus:outline-none" aria-label="Menu Mobile">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-segoni-dark/98 border-b border-segoni-border px-6 py-6 shadow-2xl">
+            <div class="flex flex-col space-y-4 font-medium tracking-wider uppercase text-xs">
+                <a href="#home" onclick="toggleMobileMenu()" class="text-segoni-cream hover:text-segoni-gold py-1">Home</a>
+                <a href="#storia" onclick="toggleMobileMenu()" class="text-segoni-cream hover:text-segoni-gold py-1">La Storia del 1920</a>
+                <a href="#catalogo" onclick="toggleMobileMenu()" class="text-segoni-cream hover:text-segoni-gold py-1">Catalogo Distillati</a>
+                <a href="#servizio-perfetto" onclick="toggleMobileMenu()" class="text-segoni-cream hover:text-segoni-gold py-1">Guida Degustazione & Servizio</a>
+                <a href="#degustazioni" onclick="toggleMobileMenu()" class="text-segoni-cream hover:text-segoni-gold py-1">Prenota Esperienza in Cantina</a>
+                <a href="#contatti" onclick="toggleMobileMenu()" class="text-segoni-cream hover:text-segoni-gold py-1">Contatti & FAQ</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-25 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-segoni-gold/30 via-segoni-dark to-segoni-dark pointer-events-none"></div>
+        <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-segoni-card/90 border border-segoni-gold/40 text-segoni-gold text-[11px] uppercase tracking-[0.3em] mb-8 shadow-md">
+                <i class="fa-solid fa-crown text-xs"></i> L'Eccellenza del Distillato di Mela Pomenga
+            </div>
+
+            <!-- Emblem -->
+            <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full p-1.5 border-2 border-segoni-gold/60 shadow-2xl bg-segoni-card flex items-center justify-center overflow-hidden gold-box-shadow">
+                <img src="SEGONI.jpg" alt="Emblema Lorenzo Segoni" class="w-full h-full object-contain transform hover:scale-105 transition duration-500" onerror="handleImgError(this, 'SEGONI', 'Lorenzo Segoni')">
+            </div>
+
+            <h1 class="font-serif-title text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-segoni-cream mb-6 leading-tight">
+                LORENZO SEGONI
+                <span class="block gold-gradient-text font-cormorant italic text-3xl sm:text-5xl md:text-6xl font-normal mt-2">
+                    Pomengeria dal 1920
+                </span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-segoni-muted text-sm sm:text-base md:text-lg font-light leading-relaxed mb-10">
+                L'arte secolare della distillazione della mela Pomenga. Elisir d'archivio e riserve pregiate custodite con devozione secondo la formula originale del Maestro Giovanni Pomengi.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#catalogo" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-segoni-gold via-yellow-500 to-segoni-bronze text-segoni-dark font-bold text-xs uppercase tracking-widest shadow-xl hover:brightness-110 transition transform hover:-translate-y-0.5">
+                    Esplora la Collezione
+                </a>
+                <a href="#degustazioni" class="w-full sm:w-auto px-8 py-4 rounded-full bg-segoni-card hover:bg-segoni-border border border-segoni-gold/40 text-segoni-cream font-bold text-xs uppercase tracking-widest transition">
+                    Prenota Degustazione
+                </a>
+            </div>
+
+            <!-- Features Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-center border-t border-segoni-border/50 pt-8">
+                <div class="p-3">
+                    <span class="block font-serif-title text-2xl md:text-3xl font-bold text-segoni-gold">1920</span>
+                    <span class="text-[11px] text-segoni-muted uppercase tracking-wider">Anno di Fondazione</span>
+                </div>
+                <div class="p-3">
+                    <span class="block font-serif-title text-2xl md:text-3xl font-bold text-segoni-gold">100%</span>
+                    <span class="text-[11px] text-segoni-muted uppercase tracking-wider">Mele Pomenga Pure</span>
+                </div>
+                <div class="p-3">
+                    <span class="block font-serif-title text-2xl md:text-3xl font-bold text-segoni-gold">Bagnomaria</span>
+                    <span class="text-[11px] text-segoni-muted uppercase tracking-wider">Alambicchi di Rame</span>
+                </div>
+                <div class="p-3">
+                    <span class="block font-serif-title text-2xl md:text-3xl font-bold text-segoni-gold">1967</span>
+                    <span class="text-[11px] text-segoni-muted uppercase tracking-wider">La Custodia Segoni</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LA STORIA SECTION -->
+    <section id="storia" class="py-24 bg-segoni-body relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <span class="text-segoni-gold text-xs uppercase tracking-[0.3em] font-semibold">L'Eredità e il Segreto</span>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-segoni-cream mt-2">La Leggenda della Pomengeria</h2>
+                <div class="w-24 h-0.5 bg-segoni-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-segoni-muted text-sm sm:text-base leading-relaxed">
+                    <p class="font-cormorant text-xl sm:text-2xl italic text-segoni-cream border-l-2 border-segoni-gold pl-4 py-1">
+                        "Nel profondo aroma della mela Pomenga risiede l'anima di chi sa attendere che il tempo compia il suo prodigio."
+                    </p>
+
+                    <p>
+                        La storia della nostra maison affonda le radici nel <strong class="text-segoni-gold font-semibold">1920</strong>, quando l'alchimista e mastro distillatore <strong class="text-segoni-cream">Giovanni Pomengi</strong> fondò la prima Pomengeria. Coltivando una varietà rara ed autoctona ad elevata concentrazione zuccherina — la <em>Mela Pomenga</em> —, sviluppò un metodo di fermentazione lenta e distillazione in alambicchi di rame a bagnomaria.
+                    </p>
+
+                    <p>
+                        Nacquero così la celebre <strong class="text-segoni-cream">Pomengiata Classica</strong> ed il prezioso <strong class="text-segoni-cream">Pomengino</strong>, elisir capaci di conquistare le tavole d'Europa per la perfetta armonia tra dolcezza fruttata e calore alcolico.
+                    </p>
+
+                    <div class="bg-segoni-card/80 p-6 rounded-2xl border border-segoni-gold/30 my-6 shadow-lg">
+                        <h4 class="font-serif-title text-xl text-segoni-gold font-bold mb-2">Il Mistero del 1967 e il Giuramento di Segoni</h4>
+                        <p class="text-xs sm:text-sm">
+                            Nel tragico autunno del <strong class="text-segoni-gold">1967</strong>, Giovanni Pomengi si tolse la vita nella quiete della sua bottega per preservare i suoi segreti dalle logiche di produzione industriale. Prima del gesto, affidò il ricettario originale ed i barili di riserva al suo più devoto allievo: <strong class="text-segoni-cream">Lorenzo Segoni</strong>, che promise di non alterare mai alcuna formula.
+                        </p>
+                    </div>
+
+                    <p>
+                        Ribattezzata <strong>"Lorenzo Segoni - Pomengeria dal 1920"</strong>, la casa persegue ancora oggi la medesima filosofia: ogni bottiglia viene sigillata ed etichettata a mano con ceralacca nera e oro.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <div class="relative rounded-2xl overflow-hidden border border-segoni-gold/40 shadow-2xl group">
+                        <img src="tris_pomengini.jpg" alt="Tris di Pomengini d'Epoca" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-700" onerror="handleImgError(this, 'tris_pomengini', 'Tris di Pomengini')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-segoni-dark via-transparent to-transparent opacity-85"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-center">
+                            <span class="font-serif-title text-lg text-segoni-gold font-bold">Il Trittico Storico</span>
+                            <p class="text-xs text-segoni-cream/80">I distillati custodi della tradizione Pomengi</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-segoni-card border border-segoni-border text-center">
+                            <i class="fa-solid fa-wine-glass text-segoni-gold text-2xl mb-2"></i>
+                            <h5 class="text-xs font-bold text-segoni-cream uppercase">Affinamento</h5>
+                            <p class="text-[11px] text-segoni-muted">Fino a 50 anni in botti di rovere e ciliegio</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-segoni-card border border-segoni-border text-center">
+                            <i class="fa-solid fa-scroll text-segoni-gold text-2xl mb-2"></i>
+                            <h5 class="text-xs font-bold text-segoni-cream uppercase">Formula 1920</h5>
+                            <p class="text-[11px] text-segoni-muted">Ricetta autentica inalterata</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CATALOGO PRODOTTI -->
+    <section id="catalogo" class="py-24 bg-segoni-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12">
+                <span class="text-segoni-gold text-xs uppercase tracking-[0.3em] font-semibold">Selezione d'Autore</span>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-segoni-cream mt-2">Il Catalogo dei Distillati</h2>
+                <p class="text-segoni-muted text-xs sm:text-sm max-w-xl mx-auto mt-3">
+                    Scopri l'intera gamma di elisir, grappe riserva ed edizioni speciali con la Guida al Servizio Perfetto integrata.
+                </p>
+                <div class="w-24 h-0.5 bg-segoni-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-12" id="filter-tabs">
+                <button onclick="filterProducts('all')" class="filter-btn active px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-segoni-gold text-segoni-dark border border-segoni-gold shadow">
+                    Tutti i Prodotti
+                </button>
+                <button onclick="filterProducts('classici')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-segoni-card text-segoni-cream border border-segoni-border hover:border-segoni-gold">
+                    Gli Elisir Classici
+                </button>
+                <button onclick="filterProducts('riserve')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-segoni-card text-segoni-cream border border-segoni-border hover:border-segoni-gold">
+                    Le Riserve
+                </button>
+                <button onclick="filterProducts('speciali')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-segoni-card text-segoni-cream border border-segoni-border hover:border-segoni-gold">
+                    Edizioni Speciali
+                </button>
+                <button onclick="filterProducts('set')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-segoni-card text-segoni-cream border border-segoni-border hover:border-segoni-gold">
+                    Confezioni & Set
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. GUIDA AL SERVIZIO PERFETTO & DEGUSTAZIONE SECTION -->
+    <section id="servizio-perfetto" class="py-24 bg-segoni-body relative border-t border-b border-segoni-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <span class="text-segoni-gold text-xs uppercase tracking-[0.3em] font-semibold">Arte Sommelier</span>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-segoni-cream mt-2">La Guida al Servizio Perfetto</h2>
+                <p class="text-segoni-muted text-xs sm:text-sm max-w-2xl mx-auto mt-3">
+                    Per apprezzare appieno le sfumature organolettiche della mela Pomenga distillata, segui i tre precetti aurei stabilita dal mastro Lorenzo Segoni.
+                </p>
+                <div class="w-24 h-0.5 bg-segoni-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-glass-card p-8 rounded-3xl border border-segoni-gold/30 text-center relative group">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-segoni-card border border-segoni-gold text-segoni-gold flex items-center justify-center text-2xl group-hover:bg-segoni-gold group-hover:text-segoni-dark transition duration-300">
+                        <i class="fa-solid fa-temperature-three-quarters"></i>
+                    </div>
+                    <h3 class="font-serif-title text-2xl font-bold text-segoni-cream mb-3">1. La Temperatura</h3>
+                    <p class="text-segoni-muted text-xs leading-relaxed">
+                        Gli elisir giovanili prediligono temperature fresche (8°C - 12°C). Le riserve storiche invecchiate in botti esaltano i loro tannini ed eteri se servite a temperatura ambiente (16°C - 18°C).
+                    </p>
+                </div>
+
+                <div class="bg-glass-card p-8 rounded-3xl border border-segoni-gold/30 text-center relative group">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-segoni-card border border-segoni-gold text-segoni-gold flex items-center justify-center text-2xl group-hover:bg-segoni-gold group-hover:text-segoni-dark transition duration-300">
+                        <i class="fa-solid fa-wine-glass-empty"></i>
+                    </div>
+                    <h3 class="font-serif-title text-2xl font-bold text-segoni-cream mb-3">2. Il Calice Inclinato</h3>
+                    <p class="text-segoni-muted text-xs leading-relaxed">
+                        Utilizza un calice a tulipano da distillato con imboccatura ristretta. Lascia ossigenare l'acquavite per 3 minuti prima del primo sorso per consentire l'apertura delle note di miele e legno.
+                    </p>
+                </div>
+
+                <div class="bg-glass-card p-8 rounded-3xl border border-segoni-gold/30 text-center relative group">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-segoni-card border border-segoni-gold text-segoni-gold flex items-center justify-center text-2xl group-hover:bg-segoni-gold group-hover:text-segoni-dark transition duration-300">
+                        <i class="fa-solid fa-cheese"></i>
+                    </div>
+                    <h3 class="font-serif-title text-2xl font-bold text-segoni-cream mb-3">3. L'Abbinamento</h3>
+                    <p class="text-segoni-muted text-xs leading-relaxed">
+                        Accoppia i distillati a formaggi erborinati d'alpeggio, cioccolato amaro monoprovincia 85%, pasticceria alle mandorle o sigari toscani d'invecchiamento.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 2. SEZIONE ESPERIENZA & PRENOTAZIONE DEGUSTAZIONI -->
+    <section id="degustazioni" class="py-24 bg-segoni-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <span class="text-segoni-gold text-xs uppercase tracking-[0.3em] font-semibold">Esperienza Boutique</span>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-segoni-cream mt-2">Visite & Degustazioni Guidate</h2>
+                <p class="text-segoni-muted text-xs sm:text-sm max-w-2xl mx-auto mt-3">
+                    Vivi un viaggio sensoriale indimenticabile nelle cantine sotterranee del 1920 guidato dai nostri maestri distillatori.
+                </p>
+                <div class="w-24 h-0.5 bg-segoni-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Packages Selection Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                
+                <!-- Package 1 -->
+                <div class="bg-segoni-card p-8 rounded-3xl border border-segoni-border hover:border-segoni-gold transition-all duration-300 flex flex-col justify-between group shadow-xl">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 rounded-full bg-segoni-gold/20 text-segoni-gold text-[10px] font-bold uppercase tracking-wider">Esperienza Classica</span>
+                            <span class="font-serif-title text-2xl font-bold gold-gradient-text">€ 45 <span class="text-xs text-segoni-muted font-normal">/pax</span></span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-segoni-cream mb-3 group-hover:text-segoni-gold transition">Percorso Storico 1920</h3>
+                        <p class="text-segoni-muted text-xs leading-relaxed mb-6">
+                            Visita guidata alla sala alambicchi d'epoca in rame e degustazione di 3 distillati classici (Gran Pomengiata, Pomengiata Classica, Pomengino) accompagnati da taglieri d'eccellenza.
+                        </p>
+                    </div>
+                    <button onclick="selectPackage('Percorso Storico 1920 (€45/pax)')" class="w-full py-3 rounded-xl bg-segoni-dark hover:bg-segoni-gold hover:text-segoni-dark border border-segoni-gold/40 text-segoni-cream text-xs font-bold uppercase tracking-widest transition">
+                        Seleziona Pacchetto
+                    </button>
+                </div>
+
+                <!-- Package 2 (Highlight) -->
+                <div class="bg-gradient-to-b from-segoni-card to-segoni-body p-8 rounded-3xl border-2 border-segoni-gold shadow-2xl flex flex-col justify-between relative transform lg:-translate-y-2 group">
+                    <span class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full bg-segoni-gold text-segoni-dark text-[10px] font-bold uppercase tracking-widest shadow">
+                        Consigliato dal Maestro
+                    </span>
+                    <div>
+                        <div class="flex justify-between items-center mb-4 mt-2">
+                            <span class="px-3 py-1 rounded-full bg-segoni-gold/30 text-segoni-gold text-[10px] font-bold uppercase tracking-wider">Riserva Gran Cru</span>
+                            <span class="font-serif-title text-3xl font-bold gold-gradient-text">€ 75 <span class="text-xs text-segoni-muted font-normal">/pax</span></span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-segoni-cream mb-3">Riserve & Millesimati</h3>
+                        <p class="text-segoni-muted text-xs leading-relaxed mb-6">
+                            Tour privato dei caratelli storici, assaggio diretto dalla botte e degustazione guidata di 4 rari millesimati compresa la Riserva 1967 e la Gran Pomengina in calici di cristallo.
+                        </p>
+                    </div>
+                    <button onclick="selectPackage('Degustazione Riserve Gran Cru (€75/pax)')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-segoni-gold via-yellow-500 to-segoni-bronze text-segoni-dark text-xs font-bold uppercase tracking-widest hover:brightness-110 transition shadow-lg">
+                        Seleziona Pacchetto
+                    </button>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="bg-segoni-card p-8 rounded-3xl border border-segoni-border hover:border-segoni-gold transition-all duration-300 flex flex-col justify-between group shadow-xl">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 rounded-full bg-segoni-gold/20 text-segoni-gold text-[10px] font-bold uppercase tracking-wider">Sensoriale & Gourmet</span>
+                            <span class="font-serif-title text-2xl font-bold gold-gradient-text">€ 90 <span class="text-xs text-segoni-muted font-normal">/pax</span></span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-segoni-cream mb-3 group-hover:text-segoni-gold transition">Pomengia & Cioccolato</h3>
+                        <p class="text-segoni-muted text-xs leading-relaxed mb-6">
+                            Masterclass di abbinamento sensoriale curata dal nostro Sommelier: 5 distillati in abbinamento con cioccolati monorigine rari e formaggi stagionati oltre 36 mesi.
+                        </p>
+                    </div>
+                    <button onclick="selectPackage('Masterclass Pomengia & Cioccolato (€90/pax)')" class="w-full py-3 rounded-xl bg-segoni-dark hover:bg-segoni-gold hover:text-segoni-dark border border-segoni-gold/40 text-segoni-cream text-xs font-bold uppercase tracking-widest transition">
+                        Seleziona Pacchetto
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Booking Interactive Form -->
+            <div id="booking-form-wrapper" class="bg-segoni-card/90 p-8 sm:p-12 rounded-3xl border border-segoni-gold/40 shadow-2xl max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <h3 class="font-serif-title text-2xl sm:text-3xl font-bold text-segoni-cream">Prenota il tuo Calendario Degustazioni</h3>
+                    <p class="text-segoni-muted text-xs mt-1">Scegli la data e l'orario desiderati per la tua visita in Pomengeria.</p>
+                </div>
+
+                <form id="tasting-booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Nome e Cognome *</label>
+                            <input type="text" id="book-name" required class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm" placeholder="Giuseppe Verdi">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Email *</label>
+                            <input type="email" id="book-email" required class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm" placeholder="giuseppe@domain.com">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Data Visita *</label>
+                            <input type="date" id="book-date" required class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Orario *</label>
+                            <select id="book-time" class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm">
+                                <option>11:00 (Aperitivo)</option>
+                                <option>15:30 (Pomeridiano)</option>
+                                <option>18:00 (Tramonto in Botte)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Ospiti *</label>
+                            <input type="number" id="book-guests" min="1" max="12" value="2" required class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Pacchetto Esperienza Selezionato</label>
+                        <select id="book-package" class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-gold font-bold focus:border-segoni-gold focus:outline-none transition text-sm">
+                            <option value="Percorso Storico 1920 (€45/pax)">Percorso Storico 1920 (€45/pax)</option>
+                            <option value="Degustazione Riserve Gran Cru (€75/pax)" selected>Degustazione Riserve Gran Cru (€75/pax)</option>
+                            <option value="Masterclass Pomengia & Cioccolato (€90/pax)">Masterclass Pomengia & Cioccolato (€90/pax)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Note o Intolleranze Alimentari</label>
+                        <textarea id="book-notes" rows="3" class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm" placeholder="Segnala eventuali richieste particolari..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-segoni-gold via-yellow-500 to-segoni-bronze text-segoni-dark font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-xl">
+                        Conferma Prenotazione Degustazione
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTATTI E FAQ -->
+    <section id="contatti" class="py-24 bg-segoni-body relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <span class="text-segoni-gold text-xs uppercase tracking-[0.3em] font-semibold">Incontra la Distilleria</span>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-segoni-cream mt-2">Contatti & Assistenza Clienti</h2>
+                <div class="w-24 h-0.5 bg-segoni-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Form -->
+                <div class="lg:col-span-7 bg-segoni-card/80 p-8 rounded-3xl border border-segoni-gold/30 shadow-xl">
+                    <h3 class="font-serif-title text-2xl font-bold text-segoni-cream mb-6">Invia un Messaggio Diretto</h3>
+                    
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Nome e Cognome</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm" placeholder="Mario Rossi">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Email</label>
+                                <input type="email" required class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm" placeholder="mario@example.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Oggetto</label>
+                            <select class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm">
+                                <option>Informazioni Ordini Online</option>
+                                <option>Richiesta Catalogo Riserve Private</option>
+                                <option>Forniture per Enoteca e Ristorazione</option>
+                                <option>Altro</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-segoni-muted mb-2">Messaggio</label>
+                            <textarea rows="4" required class="w-full px-4 py-3 rounded-xl bg-segoni-dark border border-segoni-border text-segoni-cream focus:border-segoni-gold focus:outline-none transition text-sm" placeholder="Scrivi il tuo messaggio..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-segoni-gold to-segoni-bronze text-segoni-dark font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
+                            Invia Messaggio
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Info & FAQ Accordion -->
+                <div class="lg:col-span-5 space-y-8">
+                    
+                    <!-- Direct Info Box -->
+                    <div class="bg-segoni-card p-6 rounded-3xl border border-segoni-border space-y-4">
+                        <h4 class="font-serif-title text-xl font-bold text-segoni-gold">La Distilleria Storica</h4>
+                        <p class="text-xs sm:text-sm text-segoni-muted leading-relaxed">
+                            <i class="fa-solid fa-location-dot text-segoni-gold mr-2"></i> Via delle Antiche Distellerie 19, Italia<br>
+                            <i class="fa-solid fa-envelope text-segoni-gold mr-2"></i> ordini@lorenzosegoni.it<br>
+                            <i class="fa-solid fa-phone text-segoni-gold mr-2"></i> +39 0523 892011
+                        </p>
+                        <p class="text-xs text-segoni-bronze italic">Spedizioni espresse in cassa termica sigillata in tutta Europa.</p>
+                    </div>
+
+                    <!-- FAQ -->
+                    <div class="space-y-3">
+                        <h4 class="font-serif-title text-xl font-bold text-segoni-cream mb-2">Domande Frequenti (FAQ)</h4>
+                        
+                        <div class="border border-segoni-border rounded-2xl overflow-hidden bg-segoni-card">
+                            <button onclick="toggleFaq('faq1')" class="w-full text-left p-4 flex justify-between items-center text-xs sm:text-sm font-semibold text-segoni-cream hover:text-segoni-gold transition">
+                                <span>Che cos'è esattamente la Mela Pomenga?</span>
+                                <i class="fa-solid fa-chevron-down text-xs text-segoni-gold transition-transform duration-300" id="icon-faq1"></i>
+                            </button>
+                            <div id="faq1" class="hidden p-4 pt-0 text-xs text-segoni-muted border-t border-segoni-border/50 leading-relaxed">
+                                È un'antica cultivar collinare caratterizzata da polpa compatta, profumo inteso e naturalmente ricca di fruttosio. Coltivata secondo metodi biologici nei frutteti di proprietà della famiglia.
+                            </div>
+                        </div>
+
+                        <div class="border border-segoni-border rounded-2xl overflow-hidden bg-segoni-card">
+                            <button onclick="toggleFaq('faq2')" class="w-full text-left p-4 flex justify-between items-center text-xs sm:text-sm font-semibold text-segoni-cream hover:text-segoni-gold transition">
+                                <span>Come vengono imballate le bottiglie?</span>
+                                <i class="fa-solid fa-chevron-down text-xs text-segoni-gold transition-transform duration-300" id="icon-faq2"></i>
+                            </button>
+                            <div id="faq2" class="hidden p-4 pt-0 text-xs text-segoni-muted border-t border-segoni-border/50 leading-relaxed">
+                                Ogni spedizione viaggia in speciali imballi omologati e protetti da urti termici, sigillati individualmente con nastro di garanzia Lorenzo Segoni.
+                            </div>
+                        </div>
+
+                        <div class="border border-segoni-border rounded-2xl overflow-hidden bg-segoni-card">
+                            <button onclick="toggleFaq('faq3')" class="w-full text-left p-4 flex justify-between items-center text-xs sm:text-sm font-semibold text-segoni-cream hover:text-segoni-gold transition">
+                                <span>Le ricette contengono conservanti o aromi artificiali?</span>
+                                <i class="fa-solid fa-chevron-down text-xs text-segoni-gold transition-transform duration-300" id="icon-faq3"></i>
+                            </button>
+                            <div id="faq3" class="hidden p-4 pt-0 text-xs text-segoni-muted border-t border-segoni-border/50 leading-relaxed">
+                                Assolutamente no. Tutte le formule rispettano il codice del 1920: solo succo puro fermentato, distillato d'acquavite, spezie in bacca e zucchero di canna grezzo.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-segoni-dark border-t border-segoni-border py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            
+            <div class="flex justify-center items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-segoni-gold p-1 bg-segoni-card flex items-center justify-center overflow-hidden">
+                    <img src="SEGONI.jpg" alt="Logo Footer" class="w-full h-full object-contain" onerror="handleImgError(this, 'SEGONI', 'LS')">
+                </div>
+                <span class="font-serif-title text-xl text-segoni-cream font-bold">LORENZO SEGONI</span>
+            </div>
+
+            <p class="text-xs text-segoni-muted max-w-md mx-auto leading-relaxed">
+                Pomengeria dal 1920 - Tradizione, Passione e Custodia delle Ricette Storiche del Maestro Giovanni Pomengi.
+            </p>
+
+            <div class="flex justify-center gap-6 text-segoni-gold text-base">
+                <a href="#" class="hover:text-segoni-cream transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-segoni-cream transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-segoni-cream transition" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+            <div class="border-t border-segoni-border/40 pt-6 text-[11px] text-segoni-muted flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 1920-2026 Lorenzo Segoni Pomengeria. Tutti i diritti riservati.</p>
+                <p class="text-segoni-gold/80 italic">Bevi responsabilmente. La vendita di alcolici è vietata ai minori di 18 anni.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- PRODUCT MODAL WITH PERFECT SERVICE GUIDE -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-segoni-card border border-segoni-gold/40 rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative shadow-2xl my-8">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-segoni-dark border border-segoni-border text-segoni-cream hover:text-segoni-gold flex items-center justify-center transition" aria-label="Chiudi">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" id="modal-content">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-segoni-card border-l border-segoni-gold/30 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-segoni-border flex justify-between items-center bg-segoni-dark">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-bag-shopping text-segoni-gold text-xl"></i>
+                <h3 class="font-serif-title text-xl font-bold text-segoni-cream">Il tuo Carrello</h3>
+            </div>
+            <button onclick="toggleCart()" class="text-segoni-muted hover:text-segoni-gold transition" aria-label="Chiudi Carrello">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Dynamically populated -->
+        </div>
+
+        <div class="p-6 border-t border-segoni-border bg-segoni-dark space-y-4">
+            <div class="flex justify-between items-center text-xs sm:text-sm">
+                <span class="text-segoni-muted">Subtotale:</span>
+                <span id="cart-subtotal" class="font-bold text-segoni-cream text-base">€ 0,00</span>
+            </div>
+            <div class="flex justify-between items-center text-xs text-segoni-gold">
+                <span>Spedizione:</span>
+                <span>Gratuita sopra € 80</span>
+            </div>
+            <div class="border-t border-segoni-border/60 pt-3 flex justify-between items-center font-bold text-lg text-segoni-cream">
+                <span>Totale:</span>
+                <span id="cart-total" class="gold-gradient-text text-xl">€ 0,00</span>
+            </div>
+
+            <button onclick="checkout()" class="w-full py-4 rounded-xl bg-gradient-to-r from-segoni-gold via-yellow-500 to-segoni-bronze text-segoni-dark font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
+                Procedi al Checkout Sicuro
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 'gran-pomengiata',
+                name: 'Gran Pomengiata',
+                fileBase: 'gran_pomengiata',
+                category: 'classici',
+                categoryLabel: 'Gli Elisir Classici',
+                price: 48.00,
+                volume: '500 ml',
+                abv: '28% Vol.',
+                badge: 'Ricetta 1920',
+                shortDesc: 'Elisir nobile ottenuto dall\'infusione di mele Pomenga fresche e spezie rare.',
+                longDesc: 'La Gran Pomengiata rappresenta la quintessenza della ricetta originaria ideata nel 1920 dal Maestro Giovanni Pomengi. Caratterizzata da note spiccate di mela candita, miele d\'acacia, cannella e vaniglia Bourbon.',
+                tastingNotes: 'Aroma avvolgente di mela al forno e vaniglia. Palato morbido e persistentemente fruttato.',
+                tempServizio: '10°C - 12°C',
+                calice: 'Tulipano Piccolo da Elisir',
+                abbinamento: 'Pasticceria secca alle mandorle, torte di mele speziate'
+            },
+            {
+                id: 'pomengiata-classica',
+                name: 'Pomengiata Classica',
+                fileBase: 'pomengiata_classica',
+                category: 'classici',
+                categoryLabel: 'Gli Elisir Classici',
+                price: 38.00,
+                volume: '700 ml',
+                abv: '25% Vol.',
+                badge: 'Storico',
+                shortDesc: 'Il liquore tradizionale di mela Pomenga dal gusto morbido e vellutato.',
+                longDesc: 'Formulato per la prima volta negli anni \'20, la Pomengiata Classica è il digestivo da dopocena per eccellenza. Equilibrio perfetto tra alcol e naturale dolcezza del frutto fermentato.',
+                tastingNotes: 'Profumo di mela croccante e fiori bianchi. Gusto armonioso, fresco ed elegante.',
+                tempServizio: '8°C - 10°C (anche con un cubetto di ghiaccio)',
+                calice: 'Tumbler Basso / Rock',
+                abbinamento: 'Formaggi freschi di capra, crostate di frutta'
+            },
+            {
+                id: 'pomengino',
+                name: 'Pomengino',
+                fileBase: 'pomengino',
+                category: 'classici',
+                categoryLabel: 'Gli Elisir Classici',
+                price: 28.00,
+                volume: '500 ml',
+                abv: '18% Vol.',
+                badge: 'Aperitivo Lieve',
+                shortDesc: 'Distillato leggero e brioso di pura acquavite di mele Pomenga.',
+                longDesc: 'Distillato leggero pensato sia per la degustazione liscia che per la miscelazione d\'autore. Conserva il cuore piene ed aromatico delle mele raccolte all\'inizio dell\'autunno.',
+                tastingNotes: 'Attacco fresco con spiccate note acidule di mela verde e fiori di campo.',
+                tempServizio: '6°C - 8°C ben freddo',
+                calice: 'Calice Aperitivo da Vino Bianco',
+                abbinamento: 'Crostini con lardo e miele, finger food di mare'
+            },
+            {
+                id: 'pomengiata-riserva',
+                name: 'Pomengiata Riserva 1967',
+                fileBase: 'pomengiata_riserva',
+                category: 'riserve',
+                categoryLabel: 'Le Riserve',
+                price: 120.00,
+                volume: '700 ml',
+                abv: '35% Vol.',
+                badge: 'Riserva Storica',
+                shortDesc: 'Edizione commemorativa invecchiata nei caratelli d\'archivio del 1967.',
+                longDesc: 'Ottenuta dalle botti storiche conservate da Lorenzo Segoni nel 1967 in memoria del Maestro Giovanni Pomengi. Un elisir prezioso di straordinaria complessità meditativa.',
+                tastingNotes: 'Spezie scure, cuoio, mela cotogna caramellata, frutta secca e finale di legno nobile.',
+                tempServizio: '16°C - 18°C a temperatura ambiente',
+                calice: 'Cognac Balloon / Cristallo Ampio',
+                abbinamento: 'Cioccolato fondente 85% monorigine, sigaro toscano'
+            },
+            {
+                id: 'gran-pomengina',
+                name: 'Gran Pomengina',
+                fileBase: 'gran_pomengina',
+                category: 'riserve',
+                categoryLabel: 'Le Riserve',
+                price: 65.00,
+                volume: '700 ml',
+                abv: '30% Vol.',
+                badge: 'Edizione Limitata',
+                shortDesc: 'Selezione speciale in caraffa d\'epoca finemente custodita.',
+                longDesc: 'Prodotta solo nelle annate in cui la mela Pomenga raggiunge livelli di concentrazione zuccherina eccezionali. Imbottigliata nella decanter disegnata da Lorenzo Segoni.',
+                tastingNotes: 'Raffinata, cremosa, sfumature di miele di castagno, mela cotta e noci sgusciate.',
+                tempServizio: '12°C - 14°C',
+                calice: 'Tulipano Grande da Grappa Riserva',
+                abbinamento: 'Formaggi erborinati (Gorgonzola piccante, Roquefort)'
+            },
+            {
+                id: 'pomengino-speciale',
+                name: 'Pomengino Speciale',
+                fileBase: 'pomengino_speciale',
+                category: 'speciali',
+                categoryLabel: 'Edizioni Speciali',
+                price: 55.00,
+                volume: '500 ml',
+                abv: '22% Vol.',
+                badge: 'Selezione Segoni',
+                shortDesc: 'Acquavite affinata in botti di ciliegio e castagno nostrano.',
+                longDesc: 'La ricetta personale perfezionata da Lorenzo Segoni negli anni \'70. Unisce la potenza della mela distillata alla morbidezza e ai profumi caldi del legno di ciliegio.',
+                tastingNotes: 'Colore ambrato con riflessi rubino. Sentori di amarena sotto spirito e pepe rosa.',
+                tempServizio: '14°C - 16°C',
+                calice: 'Calice Grappa Aromatico',
+                abbinamento: 'Panettone artigianale, cantucci alle mandorle'
+            },
+            {
+                id: 'pomengiata-oro',
+                name: 'Pomengiata d\'Oro',
+                fileBase: 'pomengiata_oro',
+                category: 'speciali',
+                categoryLabel: 'Edizioni Speciali',
+                price: 150.00,
+                volume: '700 ml',
+                abv: '38% Vol.',
+                badge: 'Oro 24 Carati',
+                shortDesc: 'Elisir d\'eccellenza impreziosito da edibili scaglie d\'oro puro.',
+                longDesc: 'Distillato celebrativo per le occasioni più esclusive. Scaglie edibili di puro oro 24 carati fluttuano nell\'elisir ambrato di mela Pomenga riserva.',
+                tastingNotes: 'Sontuoso, vellutato, note riposate di fichi secchi, miele d\'acacia e vaniglia.',
+                tempServizio: '15°C - 17°C',
+                calice: 'Calice da Meditazione in Cristallo',
+                abbinamento: 'Praline di cioccolato dorate, datteri ripieni'
+            },
+            {
+                id: 'tris-pomengini',
+                name: 'Tris di Pomengini',
+                fileBase: 'tris_pomengini',
+                category: 'set',
+                categoryLabel: 'Confezioni e Set',
+                price: 72.00,
+                volume: '3 x 200 ml',
+                abv: '20% Vol. media',
+                badge: 'Cofanetto Regalo',
+                shortDesc: 'Cofanetto in legno contenente le tre storiche declinazioni della casa.',
+                longDesc: 'Il regalo ideale per gli amanti della distillazione d\'autore. Contiene le tre mini decanter di Pomengiata Classica, Pomengino e Gran Pomengina.',
+                tastingNotes: 'Un percorso degustativo completo attraverso l\'evoluzione artistica della maison.',
+                tempServizio: 'Varie (Guida inclusa nel cofanetto)',
+                calice: 'Trittico Calici Assaggio Inclusi',
+                abbinamento: 'Degustazione comparata con cioccolati assortiti'
+            }
+        ];
+
+        function checkAgeVerification() {
+            const isVerified = localStorage.getItem('pomengeria_age_verified');
+            const ageModal = document.getElementById('age-gate-modal');
+            if (isVerified === 'true') {
+                ageModal.classList.add('hidden');
+            } else {
+                ageModal.classList.remove('hidden');
+            }
+        }
+
+        function verifyAge(isAdult) {
+            if (isAdult) {
+                localStorage.setItem('pomengeria_age_verified', 'true');
+                document.getElementById('age-gate-modal').classList.add('hidden');
+                showToast('Accesso confermato. Benvenuto in Lorenzo Segoni.');
+            } else {
+                const msg = document.getElementById('age-denied-msg');
+                msg.classList.remove('hidden');
+            }
+        }
+
+        function renderProducts(filter = 'all') {
+            const container = document.getElementById('product-grid');
+            container.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? products 
+                : products.filter(p => p.category === filter);
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'bg-glass-card rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 group shadow-lg';
+                card.innerHTML = `
+                    <div>
+                        <div class="relative w-full h-72 rounded-2xl overflow-hidden bg-segoni-dark mb-5 border border-segoni-border/40 flex items-center justify-center p-4">
+                            <span class="absolute top-3 left-3 z-10 px-3 py-1 rounded-full bg-segoni-gold/90 text-segoni-dark text-[10px] font-bold uppercase tracking-wider shadow">
+                                ${p.badge}
+                            </span>
+                            <img src="${p.fileBase}.jpg" 
+                                 alt="${p.name}" 
+                                 class="max-h-full object-contain transform group-hover:scale-105 transition duration-500"
+                                 onerror="handleImgError(this, '${p.fileBase}', '${p.name}')">
+                        </div>
+
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] text-segoni-bronze uppercase tracking-widest font-semibold">${p.categoryLabel}</span>
+                            <span class="text-xs text-segoni-muted">${p.volume} • ${p.abv}</span>
+                        </div>
+
+                        <h3 class="font-serif-title text-2xl font-bold text-segoni-cream group-hover:text-segoni-gold transition mb-2">${p.name}</h3>
+                        <p class="text-segoni-muted text-xs leading-relaxed mb-4 line-clamp-2">${p.shortDesc}</p>
+
+                        <!-- Quick Tasting Specs Badge -->
+                        <div class="p-3 bg-segoni-dark/80 rounded-xl border border-segoni-border/60 mb-5 space-y-1">
+                            <div class="flex items-center gap-2 text-[11px] text-segoni-gold">
+                                <i class="fa-solid fa-temperature-arrow-up text-xs"></i>
+                                <span>Temp: <strong>${p.tempServizio}</strong></span>
+                            </div>
+                            <div class="flex items-center gap-2 text-[11px] text-segoni-cream/90 truncate">
+                                <i class="fa-solid fa-utensils text-xs text-segoni-bronze"></i>
+                                <span class="truncate">Abbinamento: ${p.abbinamento}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-5 border-t border-segoni-border/40 pt-4">
+                            <span class="text-xs text-segoni-muted">Prezzo:</span>
+                            <span class="font-serif-title text-2xl font-bold gold-gradient-text">€ ${p.price.toFixed(2)}</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="openProductModal('${p.id}')" class="py-2.5 rounded-xl bg-segoni-dark hover:bg-segoni-border border border-segoni-gold/30 text-segoni-cream text-xs font-semibold uppercase tracking-wider transition">
+                                <i class="fa-solid fa-circle-info mr-1 text-segoni-gold"></i> Dettagli
+                            </button>
+                            <button onclick="addToCart('${p.id}')" class="py-2.5 rounded-xl bg-segoni-gold hover:bg-yellow-500 text-segoni-dark text-xs font-bold uppercase tracking-wider transition shadow">
+                                Aggiungi +
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterProducts(category) {
+            const buttons = document.querySelectorAll('#filter-tabs .filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-segoni-gold', 'text-segoni-dark', 'shadow');
+                btn.classList.add('bg-segoni-card', 'text-segoni-cream');
+            });
+
+            event.target.classList.remove('bg-segoni-card', 'text-segoni-cream');
+            event.target.classList.add('bg-segoni-gold', 'text-segoni-dark', 'shadow');
+
+            renderProducts(category);
+        }
+
+        function openProductModal(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="w-full h-80 rounded-2xl bg-segoni-dark border border-segoni-border p-4 flex items-center justify-center">
+                    <img src="${product.fileBase}.jpg" 
+                         alt="${product.name}" 
+                         class="max-h-full object-contain"
+                         onerror="handleImgError(this, '${product.fileBase}', '${product.name}')">
+                </div>
+                <div class="space-y-4">
+                    <span class="px-3 py-1 rounded-full bg-segoni-gold/20 text-segoni-gold text-xs font-bold uppercase tracking-wider">
+                        ${product.badge}
+                    </span>
+                    <h3 class="font-serif-title text-3xl font-bold text-segoni-cream">${product.name}</h3>
+                    <p class="text-xs text-segoni-bronze tracking-widest uppercase font-semibold">${product.volume} | ${product.abv}</p>
+                    
+                    <p class="text-segoni-muted text-xs sm:text-sm leading-relaxed">${product.longDesc}</p>
+                    
+                    <!-- PERFECT SERVICE GUIDE INSIDE MODAL -->
+                    <div class="p-4 bg-segoni-dark rounded-xl border border-segoni-gold/30 space-y-2">
+                        <h5 class="text-xs font-bold text-segoni-gold uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-crown"></i> Guida al Servizio Perfetto
+                        </h5>
+                        <div class="text-xs text-segoni-cream space-y-1 pt-1">
+                            <p><strong><i class="fa-solid fa-temperature-high text-segoni-gold mr-1"></i> Temp. Ideale:</strong> ${product.tempServizio}</p>
+                            <p><strong><i class="fa-solid fa-wine-glass text-segoni-gold mr-1"></i> Calice Consigliato:</strong> ${product.calice}</p>
+                            <p><strong><i class="fa-solid fa-cookie-bite text-segoni-gold mr-1"></i> Abbinamento:</strong> ${product.abbinamento}</p>
+                        </div>
+                        <p class="text-[11px] text-segoni-muted italic border-t border-segoni-border/50 pt-2 mt-2">${product.tastingNotes}</p>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-2">
+                        <span class="font-serif-title text-3xl font-bold gold-gradient-text">€ ${product.price.toFixed(2)}</span>
+                        <button onclick="addToCart('${product.id}'); closeProductModal();" class="px-6 py-3 rounded-xl bg-segoni-gold hover:bg-yellow-500 text-segoni-dark font-bold text-xs uppercase tracking-widest shadow">
+                            Aggiungi al Carrello
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function selectPackage(packageName) {
+            const packageSelect = document.getElementById('book-package');
+            packageSelect.value = packageName;
+            document.getElementById('booking-form-wrapper').scrollIntoView({ behavior: 'smooth' });
+            showToast(`Selezionato: ${packageName}`);
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('book-name').value;
+            const date = document.getElementById('book-date').value;
+            const pkg = document.getElementById('book-package').value;
+
+            showToast(`Richiesta inviata! Riservata visita per ${name} il ${date} (${pkg}).`);
+            e.target.reset();
+        }
+
+        let cart = [];
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`Aggiunto al carrello: ${product.name}`);
+        }
+
+        function updateQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCountBadge = document.getElementById('cart-count');
+            const cartSubtotalEl = document.getElementById('cart-subtotal');
+            const cartTotalEl = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            cartCountBadge.textContent = totalItems;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-12 text-segoni-muted space-y-3">
+                        <i class="fa-solid fa-wine-bottle text-4xl text-segoni-border"></i>
+                        <p class="text-xs sm:text-sm">Il tuo carrello è vuoto.</p>
+                        <a href="#catalogo" onclick="toggleCart()" class="inline-block text-xs text-segoni-gold underline uppercase tracking-wider">Esplora il Catalogo</a>
+                    </div>
+                `;
+                cartSubtotalEl.textContent = '€ 0,00';
+                cartTotalEl.textContent = '€ 0,00';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemSubtotal = item.price * item.qty;
+                subtotal += itemSubtotal;
+
+                const div = document.createElement('div');
+                div.className = 'flex items-center gap-4 bg-segoni-dark p-3 rounded-xl border border-segoni-border/50';
+                div.innerHTML = `
+                    <div class="w-14 h-14 rounded-lg bg-segoni-card p-1 border border-segoni-border flex-shrink-0 flex items-center justify-center">
+                        <img src="${item.fileBase}.jpg" alt="${item.name}" class="max-h-full object-contain" onerror="handleImgError(this, '${item.fileBase}', '${item.name}')">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-segoni-cream truncate">${item.name}</h4>
+                        <p class="text-xs text-segoni-gold">€ ${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-segoni-card px-2 py-1 rounded-lg border border-segoni-border">
+                        <button onclick="updateQty('${item.id}', -1)" class="text-xs text-segoni-muted hover:text-segoni-gold px-1">-</button>
+                        <span class="text-xs font-bold text-segoni-cream">${item.qty}</span>
+                        <button onclick="updateQty('${item.id}', 1)" class="text-xs text-segoni-muted hover:text-segoni-gold px-1">+</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(div);
+            });
+
+            cartSubtotalEl.textContent = `€ ${subtotal.toFixed(2)}`;
+            cartTotalEl.textContent = `€ ${subtotal.toFixed(2)}`;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Il carrello è vuoto!');
+                return;
+            }
+            showToast('Ordine inoltrato con successo! Riceverai una mail di conferma.');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'pointer-events-auto bg-segoni-card border border-segoni-gold text-segoni-cream text-xs px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border-l-4 border-l-segoni-gold';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-segoni-gold text-base"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Messaggio inviato! Il nostro staff ti risponderà entro 24 ore.');
+            e.target.reset();
+        }
+
+        function toggleFaq(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                el.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            checkAgeVerification();
+            renderProducts('all');
+            updateCartUI();
+        });
+    </script>
+</body>
+</html>
